@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LicenseCodeResponse, User } from '../models';
+import { LicenseCodeResponse, LoginResponse, User } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +24,9 @@ export class ApiService {
   updateUser(updateUserData: any) {
     console.log(updateUserData)
     return this.http.put<User>('http://127.0.0.1:3000/api/users', updateUserData);
+  }
+
+  login(loginData: any) {
+    return this.http.post<LoginResponse>('http://127.0.0.1:3000/api/auth/login', loginData);
   }
 }
