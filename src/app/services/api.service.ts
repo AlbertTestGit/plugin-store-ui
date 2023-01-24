@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LicenseCodeResponse, LoginResponse, User } from '../models';
+import { LicenseCodeResponse, LoginResponse, Plugin, User } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +28,9 @@ export class ApiService {
 
   login(loginData: any) {
     return this.http.post<LoginResponse>('http://127.0.0.1:3000/api/auth/login', loginData);
+  }
+
+  getPlugins() {
+    return this.http.get<Plugin[]>('http://127.0.0.1:3000/api/plugins');
   }
 }

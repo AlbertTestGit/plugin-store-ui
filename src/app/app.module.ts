@@ -24,6 +24,8 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
+import { PluginsComponent } from './components/plugins/plugins.component';
+import { PluginDialogComponent } from './components/plugin-dialog/plugin-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import {MatMenuModule} from '@angular/material/menu';
     UserDialogComponent,
     LoginComponent,
     NavbarComponent,
+    PluginsComponent,
+    PluginDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,15 @@ export interface User {
   role: string;
 }
 
+export interface Plugin {
+  id: number;
+  name: string;
+  petrelVersion: string;
+  productKey: string;
+  developerKey: string;
+  createdAt: Date;
+}
+
 export interface LoginResponse {
   access_token: string;
 }
