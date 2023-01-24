@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LicenseCodeResponse, LoginResponse, Plugin, User } from '../models';
 
@@ -10,20 +10,32 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getLicenseCode(token: string) {
-    return this.http.get<LicenseCodeResponse>(`http://127.0.0.1:3000/api/licenses/manual-activation/${token}`);
+    const access_token = localStorage.getItem('access_token')!;
+    return this.http.get<LicenseCodeResponse>(`http://127.0.0.1:3000/api/licenses/manual-activation/${token}`, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${access_token}`)
+    });
   }
 
   getUsers() {
-    return this.http.get<User[]>('http://127.0.0.1:3000/api/users');
+    const access_token = localStorage.getItem('access_token')!;
+    return this.http.get<User[]>('http://127.0.0.1:3000/api/users', {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${access_token}`)
+    });
   }
 
   createUser(creatUserData: any) {
-    return this.http.post<User>('http://127.0.0.1:3000/api/users', creatUserData);
+    const access_token = localStorage.getItem('access_token')!;
+    return this.http.post<User>('http://127.0.0.1:3000/api/users', creatUserData, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${access_token}`)
+    });
   }
 
   updateUser(updateUserData: any) {
+    const access_token = localStorage.getItem('access_token')!;
     console.log(updateUserData)
-    return this.http.put<User>('http://127.0.0.1:3000/api/users', updateUserData);
+    return this.http.put<User>('http://127.0.0.1:3000/api/users', updateUserData, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${access_token}`)
+    });
   }
 
   login(loginData: any) {

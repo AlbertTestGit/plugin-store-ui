@@ -26,6 +26,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import { PluginsComponent } from './components/plugins/plugins.component';
 import { PluginDialogComponent } from './components/plugin-dialog/plugin-dialog.component';
+import { LicensesComponent } from './components/licenses/licenses.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PluginDialogComponent } from './components/plugin-dialog/plugin-dialog.
     NavbarComponent,
     PluginsComponent,
     PluginDialogComponent,
+    LicensesComponent,
   ],
   imports: [
     BrowserModule,
