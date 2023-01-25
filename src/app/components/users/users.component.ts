@@ -46,6 +46,20 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  deleteUser(row: any) {
+    console.log(row)
+    if (confirm(`Вы действительно хотите удалить пользователя "${row.username}"`)) {
+      this.apiService.deleteUser(row.id).subscribe({
+        next: () => {
+          alert('Success!');
+        },
+        error: (err) => {
+          alert(err.error.message);
+        }
+      })
+    }
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
