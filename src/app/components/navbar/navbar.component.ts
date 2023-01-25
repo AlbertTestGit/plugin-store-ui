@@ -11,7 +11,7 @@ import { JwtPayload } from 'src/app/models';
 export class NavbarComponent implements OnInit {
   constructor(private router: Router) {}
 
-  username = '';
+  jwtUser: JwtPayload | undefined;
   isAuthenticated = false
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
     if (token) {
       this.isAuthenticated = true;
       const decode = jwt_decode<JwtPayload>(token);
-      this.username = decode.username;
+      this.jwtUser = decode;
       // console.log(new Date((new Date(0)).setUTCSeconds(decode.exp)));
     }
   }

@@ -4,7 +4,7 @@ export interface LicenseCodeResponse {
 }
 
 export interface User {
-  id: string;
+  id: number;
   username: string;
   role: string;
 }
@@ -14,7 +14,6 @@ export interface Plugin {
   name: string;
   petrelVersion: string;
   productKey: string;
-  developerKey: string;
   createdAt: Date;
 }
 
@@ -23,9 +22,26 @@ export interface LoginResponse {
 }
 
 export interface JwtPayload {
-  sub: string,
-  username: string,
-  role: string,
-  iat: number,
-  exp: number
+  sub: number;
+  username: string;
+  role: string;
+  iat: number;
+  exp: number;
+}
+
+export interface PluginShortInfo {
+  productKey: string;
+  name: string;
+  unusedLicenses: number;
+}
+
+export interface UserLicenses {
+  user: User;
+  licenses: PluginShortInfo[];
+}
+
+export interface UpdateUserLicense {
+  swid: string;
+  userId: string;
+  count: number;
 }

@@ -21,7 +21,7 @@ export class PluginsComponent {
     });
   }
 
-  displayedColumns: string[] = ['name', 'petrelVersion', 'productKey', 'developerKey', 'createdAt', 'action'];
+  displayedColumns: string[] = ['name', 'petrelVersion', 'productKey', 'createdAt', 'action'];
   dataSource!: MatTableDataSource<Plugin>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -44,6 +44,20 @@ export class PluginsComponent {
       width: '30%',
       data: row
     });
+  }
+
+  deletePlugin(row: any) {
+    // console.log(row)
+    if (confirm(`Вы действительно хотите удалить "${row.name}"`)) {
+      this.apiService.deletePlugin(row.id).subscribe({
+        next: () => {
+          alert('Success!');
+        },
+        error: (err) => {
+          alert(err.error.message);
+        }
+      })
+    }
   }
 
   applyFilter(event: Event) {

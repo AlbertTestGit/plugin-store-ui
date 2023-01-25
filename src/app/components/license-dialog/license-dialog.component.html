@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Выдача или отзыв лицензии для {{editData.row.name}}</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="licenseForm">
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>User ID</mat-label>
+      <input matInput formControlName="userId" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Product Key</mat-label>
+      <input matInput formControlName="swid" readonly>
+    </mat-form-field> -->
+
+    <input matInput formControlName="userId" readonly hidden>
+    <input matInput formControlName="swid" readonly hidden>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Count</mat-label>
+      <input matInput formControlName="count" type="number" min="0">
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-flat-button mat-dialog-close>Закрыть</button>
+  <button mat-flat-button color="primary" (click)="updateUserLicense()">Обновить</button>
+</div>

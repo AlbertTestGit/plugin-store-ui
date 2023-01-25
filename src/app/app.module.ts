@@ -27,6 +27,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { PluginsComponent } from './components/plugins/plugins.component';
 import { PluginDialogComponent } from './components/plugin-dialog/plugin-dialog.component';
 import { LicensesComponent } from './components/licenses/licenses.component';
+import { LicenseDialogComponent } from './components/license-dialog/license-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { LicensesComponent } from './components/licenses/licenses.component';
     PluginsComponent,
     PluginDialogComponent,
     LicensesComponent,
+    LicenseDialogComponent,
   ],
   imports: [
     BrowserModule,

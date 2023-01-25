@@ -1,1 +1,22 @@
-<p>plugin-dialog works!</p>
+<h1 mat-dialog-title *ngIf="isUpdate">Обновить плагин</h1>
+<h1 mat-dialog-title *ngIf="!isUpdate">Добавить плагин</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="pluginForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Имя плагина</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Версия Petrel</mat-label>
+      <input matInput formControlName="petrelVersion">
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-flat-button mat-dialog-close>Закрыть</button>
+  <button *ngIf="!isUpdate" mat-flat-button color="primary" (click)="createPlugin()" [disabled]="pluginForm.invalid">Добавить</button>
+  <button *ngIf="isUpdate" mat-flat-button color="primary" (click)="updatePlugin()">Обновить</button>
+</div>
